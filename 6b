@@ -1,0 +1,36 @@
+class SavingAccount:
+    def __init__(self, balance=0):
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount <= 0:
+            raise ValueError("Deposit amount must be positive")
+        self.balance += amount
+        print(f"Deposited: {amount}")
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            raise ValueError("Withdrawal amount must be positive")
+        if amount > self.balance:
+            raise ValueError("Insufficient funds")
+        self.balance -= amount
+        print(f"Withdrew: {amount}")
+
+    def display_balance(self):
+        print(f"Balance: {self.balance}")
+
+account = SavingAccount(100)
+account.display_balance()
+account.deposit(50)
+account.withdraw(30)
+account.display_balance()
+
+try:
+    account.deposit(-10)
+except ValueError as e:
+    print(e)
+
+try:
+    account.withdraw(150)
+except ValueError as e:
+    print(e)
