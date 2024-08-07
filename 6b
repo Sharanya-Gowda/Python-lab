@@ -19,18 +19,25 @@ class SavingAccount:
     def display_balance(self):
         print(f"Balance: {self.balance}")
 
+# Creating an instance of SavingAccount with an initial balance of 100
 account = SavingAccount(100)
-account.display_balance()
-account.deposit(50)
-account.withdraw(30)
+
+# Displaying the initial balance
 account.display_balance()
 
+# Getting user input for deposit
 try:
-    account.deposit(-10)
+    deposit_amount = float(input("Enter amount to deposit: "))
+    account.deposit(deposit_amount)
 except ValueError as e:
     print(e)
 
+# Getting user input for withdrawal
 try:
-    account.withdraw(150)
+    withdraw_amount = float(input("Enter amount to withdraw: "))
+    account.withdraw(withdraw_amount)
 except ValueError as e:
     print(e)
+
+# Displaying the balance after deposit and withdrawal
+account.display_balance()
